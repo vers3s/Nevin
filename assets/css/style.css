@@ -240,18 +240,19 @@ body.nav-active { overflow: hidden; }
 }
 
 .slider {
-  --slider-items: 1;
+  --slider-items: 1; /* show one item at a time */
   --item-gap: 12px;
 
   margin-block-start: 60px;
-  overflow: hidden;
+  overflow: hidden; /* hide the other slides */
+  position: relative;
 }
 
 .slider-container {
-  position: relative;
   display: flex;
   gap: var(--item-gap);
   transition: transform var(--cubic-ease-out);
+  will-change: transform;
 }
 
 .slider-item {
@@ -260,6 +261,7 @@ body.nav-active { overflow: hidden; }
 
   min-width: var(--item-width);
   width: var(--item-width);
+  flex-shrink: 0; /* prevent shrinking */
 }
 
 .slider-control {
